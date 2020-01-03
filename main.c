@@ -114,10 +114,11 @@ int main(int ac, char **av)
 {
 	char *buff;
 	char **token, **word_cmp;
-	int val = 0, i = 0;
+	int i = 0, j = 0, val = 0;
 	stack_t *head;
 	size_t n = 0;
 
+	instruction_t fun[] = {{"push", add_dnodeint}, {"pall", print_dlistint}, {NULL, NULL}};
 	head = NULL;
 	if (ac != 2)
 	{
@@ -130,16 +131,17 @@ int main(int ac, char **av)
 	while (token[i] != NULL)
 	{
 		word_cmp = tokens(token[i], " ");
-		val = strcmp(word_cmp[0], "push");
-		if (val == 0)
+		while (fun[j].opcode != NULL)
 		{
-			add_dnodeint(&head, atoi(word_cmp[1]));
-			i++;
+			val = strcmp(word_cmp[0], fun[j].opcode);
+			if (val == 0)
+			{
+				(fun[j].f)(&head, atoi(word_cmp[1]));
+				break;
+			}
+			j++;
 		}
-		else
-		{
-			i++;
-		}
+		i++;
 	}
 	n = print_dlistint(head);
 	printf("%lu elements\n", n);
