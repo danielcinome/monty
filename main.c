@@ -5,6 +5,7 @@
 #include <fcntl.h>
 #include <unistd.h>
 #include <stdlib.h>
+#include <string.h>
 
 /**
  * read_textfile - reads a text file and prints it to the POSIX standard output
@@ -35,11 +36,89 @@ char *read_textfile(const char *filename)
 	close(fd);
 	return (buff);
 }
+char **tokens(char *buff, char *sep)
+{
+	char *word;
+	char **token;
+	int i = 0, val = 0;
 
+	val = strlen(buff);
+	token = malloc(sizeof(char *) * val);
+	if (token == NULL)
+		return (NULL);
+	word = strtok(buff, sep);
+	while (word != NULL)
+	{
+		token[i] = word;
+		i++;
+		word = strtok(NULL, sep);
+	}
+	token[i] = NULL;
+	return token;
+}
+/**
+* add_dnodeint - adds a new node at the beginning of a list
+* @head : head
+* @n : number
+* Return: new node
+*/
+
+stack_t *add_dnodeint(stack_t **head, const int n)
+{
+	stack_t *temp;
+	stack_t *new;
+
+	if (head == NULL)
+		return (NULL);
+
+	new = malloc(sizeof(stack_t));
+	if (new == NULL)
+		return (NULL);
+
+	temp = *head;
+	new->n = n;
+	if (*head == NULL)
+	{
+		new->next = NULL;
+		new->prev = NULL;
+		*head = new;
+	}
+	else
+	{
+		new->next = *head;
+		new->prev = NULL;
+		temp->prev = new;
+		*head = new;
+	}
+	return (*head);
+}
+/**
+ * print_dlistint - function that prints all the elements of a list
+ * @h : head
+ * Return: number of elements
+ */
+
+size_t print_dlistint(const stack_t *h)
+{
+	size_t i = 0;
+
+	while (h != NULL)
+	{
+		printf("%d\n", h->n);
+		h = h->next;
+		i++;
+	}
+	return (i);
+}
 int main(int ac, char **av)
 {
 	char *buff;
+	char **token, **word_cmp;
+	int val = 0, i = 0;
+	stack_t *head;
+	size_t n = 0;
 
+	head = NULL;
 	if (ac != 2)
 	{
 		printf("USAGE: monty file\n");
@@ -47,5 +126,22 @@ int main(int ac, char **av)
 	}
 	buff = read_textfile(av[1]);
 	printf("%s\n", buff);
+	token = tokens(buff, "\n");
+	while (token[i] != NULL)
+	{
+		word_cmp = tokens(token[i], " ");
+		val = strcmp(word_cmp[0], "push");
+		if (val == 0)
+		{
+			add_dnodeint(&head, atoi(word_cmp[1]));
+			i++;
+		}
+		else
+		{
+			i++;
+		}
+	}
+	n = print_dlistint(head);
+	printf("%lu elements\n", n);
 	return (0);
 }
