@@ -6,12 +6,13 @@
  * @av: arguments
  * Return: 0 or 1
  */
+int number = 0;
 int main(int ac, char **av)
 {
 	stack_t *head;
 	char *buff;
 	char **token, **word_cmp;
-	int i = 0, j = 0;
+	int i = 0, j = 0, line_number = 1;
 	instruction_t fun[] = {
 		{"push", push},
 		{NULL, NULL}
@@ -34,10 +35,12 @@ int main(int ac, char **av)
 				pall(head);
 			if (strcmp(fun[j].opcode, word_cmp[0]) == 0)
 			{
-				(fun[j].f)(&head, atoi(word_cmp[1]));
+				number = atoi(word_cmp[1]);
+				(fun[j].f)(&head, line_number);
 			}
 			j++;
 		}
+		line_number++;
 		i++;
 		j = 0;
 	}

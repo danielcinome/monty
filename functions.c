@@ -11,7 +11,8 @@ void push(stack_t **stack, unsigned int line_number)
 {
 	stack_t *temp;
 	stack_t *new;
-
+	
+	line_number = line_number;
 	if (stack == NULL)
 		exit(1);
 
@@ -20,7 +21,7 @@ void push(stack_t **stack, unsigned int line_number)
 		exit(1);
 
 	temp = *stack;
-	new->n = line_number;
+	new->n = number;
 	if (*stack == NULL)
 	{
 		new->next = NULL;
