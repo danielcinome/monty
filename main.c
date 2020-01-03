@@ -15,6 +15,7 @@ int main(int ac, char **av)
 	int i = 0, j = 0, line_number = 1;
 	instruction_t fun[] = {
 		{"push", push},
+		{"pint", pint},
 		{NULL, NULL}
 	};
 
@@ -35,7 +36,8 @@ int main(int ac, char **av)
 				pall(head);
 			if (strcmp(fun[j].opcode, word_cmp[0]) == 0)
 			{
-				number = atoi(word_cmp[1]);
+				if (word_cmp[1] != NULL)
+					number = atoi(word_cmp[1]);
 				(fun[j].f)(&head, line_number);
 			}
 			j++;

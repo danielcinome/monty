@@ -45,5 +45,6 @@ char *read_textfile(const char *filename);
 char **tokens(char *buff, char *sep);
 size_t pall(const stack_t *h);
 void push(stack_t **stack, unsigned int line_number);
+void pint(stack_t **h, unsigned int line_number);
 
 #endif
