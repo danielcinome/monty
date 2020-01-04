@@ -45,10 +45,14 @@ void push(stack_t **stack, unsigned int line_number)
 
 void pall(stack_t **stack, unsigned int line_number)
 {
+	stack_t *temp = NULL;
+
+	temp = *stack;
 	line_number = line_number;
 	while (*stack != NULL)
 	{
 		printf("%d\n", (*stack)->n);
 		*stack = (*stack)->next;
 	}
+	*stack = temp;
 }
