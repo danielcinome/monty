@@ -34,5 +34,5 @@ void search(char *buff, unsigned int line_number, stack_t **head)
 		i++;
 	}
 	if (flag == 0)
-		fprintf(stderr,"L%d unknown instruction %s\n", line_number, word_cmp[0]);
+		fprintf(stderr, "L%d unknown instruction %s\n", line_number, word_cmp[0]);
 }
