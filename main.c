@@ -1,12 +1,12 @@
 #include "monty.h"
-
+int number = 0;
 /**
  * main - principal function
  * @ac: Number of arguments
  * @av: arguments
  * Return: 0 or 1
  */
-int number = 0;
+
 int main(int ac, char **av)
 {
 	 stack_t *head = NULL;
