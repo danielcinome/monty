@@ -37,7 +37,7 @@ int main(int ac, char **av)
 			if (strcmp(fun[j].opcode, word_cmp[0]) == 0)
 			{
 				if (word_cmp[1] != NULL)
-					number = atoi(word_cmp[1]);
+					number = _atoi(word_cmp[1], line_number);
 				(fun[j].f)(&head, line_number);
 			}
 			j++;

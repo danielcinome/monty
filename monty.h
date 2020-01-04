@@ -46,5 +46,6 @@ char **tokens(char *buff, char *sep);
 size_t pall(const stack_t *h);
 void push(stack_t **stack, unsigned int line_number);
 void pint(stack_t **h, unsigned int line_number);
+int _atoi(char *s, int line_number);
 
 #endif
