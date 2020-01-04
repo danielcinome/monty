@@ -38,30 +38,4 @@ int main(int ac, char **av)
 	fclose(fp);
 	printf("%d\n", line_number);
 	return (0);
-	/*
-	buff = read_textfile(av[1]);
-	token = tokens(buff, "\n");
-	while (token[i] != NULL)
-	{
-		word_cmp = tokens(token[i], " ");
-		if (token[0] == NULL)
-			line_number++;
-		if (word_cmp[0] != NULL)
-		{
-			while (fun[j].opcode != NULL)
-			{
-				if (strcmp(fun[j].opcode, word_cmp[0]) == 0)
-				{
-					if (word_cmp[1] != NULL)
-						number = _atoi(word_cmp[1], line_number);
-					(fun[j].f)(&head, line_number);
-				}
-				j++;
-			}
-			line_number++;
-		}
-		i++;
-		j = 0;
-	}
-	*/
 }

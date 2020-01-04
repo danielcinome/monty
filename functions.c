@@ -27,7 +27,6 @@ void push(stack_t **stack, unsigned int line_number)
 		new->next = NULL;
 		new->prev = NULL;
 		*stack = new;
-		printf("Entre 0\n");
 	}
 	else
 	{
@@ -35,19 +34,22 @@ void push(stack_t **stack, unsigned int line_number)
 		new->prev = NULL;
 		temp->prev = new;
 		*stack = new;
-		printf("Entre n\n");
 	}
 	printf("%d\n", new->n);
 }
 
+/**
+* pall -  prints all the values on the stack
+* @stack : head
+* @line_number : line number
+*/
+
 void pall(stack_t **stack, unsigned int line_number)
 {
-
 	line_number = line_number;
 	while (*stack != NULL)
 	{
 		printf("%d\n", (*stack)->n);
 		*stack = (*stack)->next;
 	}
-	printf("Hola\n");
 }
