@@ -25,7 +25,7 @@ void search(char *buff, unsigned int line_number, stack_t **head)
 	{
 		if (strcmp(ops[i].opcode, word_cmp[0]) == 0)
 		{
-			if (word_cmp[1] != NULL)
+			if (word_cmp[1] != NULL && strcmp("push", word_cmp[0]) == 0)
 				number = _atoi(word_cmp[1], line_number);
 			(ops[i].f)(head, line_number);
 		}
