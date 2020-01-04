@@ -15,7 +15,7 @@ void search(char *buff, unsigned int line_number, stack_t **head)
 		{NULL, NULL}
 	};
 	char **word_cmp;
-	int i = 0;
+	int i = 0, flag = 0;
 
 	line_number = line_number;
 	word_cmp = tokens(buff, "\t ");
@@ -28,7 +28,11 @@ void search(char *buff, unsigned int line_number, stack_t **head)
 			if (word_cmp[1] != NULL && strcmp("push", word_cmp[0]) == 0)
 				number = _atoi(word_cmp[1], line_number);
 			(ops[i].f)(head, line_number);
+			flag = 1;
+			break;
 		}
 		i++;
 	}
+	if (flag == 0)
+		fprintf(stderr,"L%d unknown instruction %s\n", line_number, word_cmp[0]);
 }
