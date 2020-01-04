@@ -9,7 +9,7 @@ int number = 0;
 
 int main(int ac, char **av)
 {
-	stack_t *head = NULL;
+	stack_t *stack = NULL;
 	char *line_buff = NULL;
 	size_t line_buff_size = 0;
 	unsigned int line_number = 1;
@@ -30,11 +30,12 @@ int main(int ac, char **av)
 	{
 		tok = strtok(line_buff, "\n\t\r");
 		if (tok != NULL)
-			search(tok, line_number, &head);
+			search(tok, line_number, &stack);
 		line_number++;
 	}
-	free(line_buff);
-	line_buff = NULL;
 	fclose(fp);
+	free(line_buff);
+	free_stack(&stack);
+	line_buff = NULL;
 	return (0);
 }
