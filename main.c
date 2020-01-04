@@ -9,7 +9,7 @@ int number = 0;
 
 int main(int ac, char **av)
 {
-	 stack_t *head = NULL;
+	stack_t *head = NULL;
 	char *line_buff = NULL;
 	size_t line_buff_size = 0;
 	unsigned int line_number = 1;
@@ -18,7 +18,7 @@ int main(int ac, char **av)
 
 	if (ac != 2)
 	{
-		fprintf(stderr, "USAGE: monty file\n");
+		write(STDERR_FILENO, "USAGE: monty file\n", 18);
 		exit(EXIT_FAILURE);
 	}
 	if (!fp)
