@@ -35,7 +35,6 @@ void push(stack_t **stack, unsigned int line_number)
 		temp->prev = new;
 		*stack = new;
 	}
-	printf("%d\n", new->n);
 }
 
 /**
