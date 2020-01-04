@@ -29,7 +29,7 @@ int _atoi(char *s, int line_number)
 	}
 	if (a == 1)
 	{
-		printf("L<%d>: usage: push integer\n", line_number);
+		fprintf(stderr, "L<%d>: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 	return (o * val);
