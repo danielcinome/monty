@@ -36,6 +36,5 @@ int main(int ac, char **av)
 	free(line_buff);
 	line_buff = NULL;
 	fclose(fp);
-	printf("%d\n", line_number);
 	return (0);
 }
