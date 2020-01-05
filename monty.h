@@ -51,5 +51,6 @@ void pall(stack_t **stack, unsigned int line_number);
 void push(stack_t **stack, unsigned int line_number);
 void pint(stack_t **h, unsigned int line_number);
 int _atoi(char *s);
+void pop(stack_t **head, unsigned int line_number);
 
 #endif

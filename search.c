@@ -43,6 +43,7 @@ void search(char *buff, unsigned int line_number)
 		{"push", push},
 		{"pall", pall},
 		{"pint", pint},
+		{"pop", pop},
 		{NULL, NULL}};
 	char **word_cmp;
 	int flag = 0, i = 0;
