@@ -41,7 +41,7 @@ void search(char *buff, unsigned int line_number)
 	char **word_cmp;
 	int flag = 0, i = 0;
 
-	word_cmp = tokens(buff, "\t\n ");
+	word_cmp = tokens(buff, "\t ");
 	if (word_cmp[0] == NULL)
 		return;
 	while (ops[i].opcode != NULL)
