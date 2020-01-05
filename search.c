@@ -22,6 +22,7 @@ void case_push(instruction_t ops[], char **word_cmp, unsigned int line_number)
 	{
 		if (isdigit(word_cmp[1][j]) == 0)
 		{
+			free(word_cmp);
 			fprintf(stderr, "L%d: usage: push integer\n", line_number);
 			exit(EXIT_FAILURE);
 		}
