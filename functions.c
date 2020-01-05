@@ -71,7 +71,7 @@ void pint(stack_t **h, unsigned int line_number)
 
 	if (h == NULL || *h == NULL)
 	{
-		printf("L<%d>: can't pint, stack empty\n", line_number);
+		fprintf(stderr, "L<%d>: can't pint, stack empty\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 	head = *h;
