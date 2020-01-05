@@ -37,7 +37,11 @@ void case_push(instruction_t ops[], char **word_cmp, unsigned int line_number)
 
 void search(char *buff, unsigned int line_number)
 {
-	instruction_t ops[] = {{"push", push}, {"pall", pall}, {NULL, NULL}};
+	instruction_t ops[] = {
+		{"push", push},
+		{"pall", pall},
+		{"pint", pint},
+		{NULL, NULL}};
 	char **word_cmp;
 	int flag = 0, i = 0;
 
