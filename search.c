@@ -49,7 +49,10 @@ void search(char *buff, unsigned int line_number)
 
 	word_cmp = tokens(buff, "\t ");
 	if (word_cmp[0] == NULL)
+	{
+		free(word_cmp);
 		return;
+	}
 	while (ops[i].opcode != NULL)
 	{
 		if (strcmp(ops[i].opcode, word_cmp[0]) == 0)
