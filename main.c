@@ -1,15 +1,14 @@
 #include "monty.h"
-int number = 0;
+stack_t *head_stack = NULL;
+
 /**
  * main - principal function
  * @ac: Number of arguments
  * @av: arguments
  * Return: 0 or 1
  */
-
 int main(int ac, char **av)
 {
-	stack_t *stack = NULL;
 	char *line_buff = NULL;
 	size_t line_buff_size = 0;
 	unsigned int line_number = 1;
@@ -30,12 +29,12 @@ int main(int ac, char **av)
 	{
 		tok = strtok(line_buff, "\n\t\r");
 		if (tok != NULL)
-			search(tok, line_number, &stack);
+			search(tok, line_number);
 		line_number++;
 	}
 	fclose(fp);
 	free(line_buff);
-	free_stack(&stack);
+	//free_stack(&head_stack);
 	line_buff = NULL;
 	return (0);
 }

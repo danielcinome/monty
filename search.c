@@ -4,35 +4,48 @@
 * search - function that the opcode looks for
 * @buff : line content
 * @line_number : line number
-* @head : head
 */
 
-void search(char *buff, unsigned int line_number, stack_t **head)
+void search(char *buff, unsigned int line_number)
 {
-	instruction_t ops[] = {
-		{"push", push},
-		{"pall", pall},
-		{NULL, NULL}
-	};
+	instruction_t ops[] = {{"push", push}, {"pall", pall}, {NULL, NULL}};
 	char **word_cmp;
-	int i = 0, flag = 0;
+	int i = 0, j = 0, flag = 0;
 
-	line_number = line_number;
 	word_cmp = tokens(buff, "\t ");
-	if (word_cmp[0] == NULL)
-		return;
 	while (ops[i].opcode != NULL)
 	{
 		if (strcmp(ops[i].opcode, word_cmp[0]) == 0)
 		{
-			if (word_cmp[1] != NULL && strcmp("push", word_cmp[0]) == 0)
-				number = _atoi(word_cmp[1], line_number);
-			(ops[i].f)(head, line_number);
+			if (strcmp(word_cmp[0], "push") == 0)
+			{
+				if (word_cmp[1] == NULL)
+				{
+					fprintf(stderr, "L%d: usage: push integer\n", line_number),
+					exit(EXIT_FAILURE);
+				}
+				if (word_cmp[1][0] == '-')
+					j++;
+				while (word_cmp[1][j])
+				{
+					if (isdigit(word_cmp[1][j]) == 0)
+					{
+						fprintf(stderr, "L%d: usage: push integer\n", line_number);
+						exit(EXIT_FAILURE);
+					}
+					j++;
+				}
+				(ops[i].f)(&head_stack, _atoi(word_cmp[1]));
+			}
+			else
+				(ops[i].f)(&head_stack, line_number);
 			flag = 1;
-			break;
 		}
 		i++;
 	}
-	if (flag == 0)
-		fprintf(stderr, "L%d unknown instruction %s\n", line_number, word_cmp[0]);
+	if (flag != 1)
+	{
+		fprintf(stderr, "L%d: unknown instruction %s\n", line_number, word_cmp[0]);
+		exit(EXIT_FAILURE);
+	}
 }

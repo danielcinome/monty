@@ -8,8 +8,8 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 
-extern int number;
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -41,12 +41,14 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-void search(char *buff, unsigned int line_number, stack_t **head);
+extern stack_t *head_stack;
+
+void search(char *buff, unsigned int line_number);
 void free_stack(stack_t **stack);
 char **tokens(char *buff, char *sep);
 void pall(stack_t **stack, unsigned int line_number);
 void push(stack_t **stack, unsigned int line_number);
 void pint(stack_t **h, unsigned int line_number);
-int _atoi(char *s, int line_number);
+int _atoi(char *s);
 
 #endif

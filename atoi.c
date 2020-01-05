@@ -3,15 +3,14 @@
 /**
 * _atoi - funtion
 * @s : pointer
-* @line_number : line number
 * Return: int
 */
 
-int _atoi(char *s, int line_number)
+int _atoi(char *s)
 {
 	unsigned int val = 0;
 	int c;
-	int o = 1, a = 0;
+	int o = 1;
 
 	for (c = 0; c[s] != '\0' ; c++)
 	{
@@ -25,12 +24,7 @@ int _atoi(char *s, int line_number)
 			o = o * (-1);
 
 		else
-			a = 1;
-	}
-	if (a == 1)
-	{
-		fprintf(stderr, "L<%d>: usage: push integer\n", line_number);
-		exit(EXIT_FAILURE);
+			val = val;
 	}
 	return (o * val);
 }
