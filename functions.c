@@ -103,3 +103,19 @@ void pop(stack_t **head, unsigned int line_number)
 		free(temp);
 	}
 }
+
+/**
+* swap - swaps the top two elements of the stack
+* @stack : head
+* @line_number : line number
+*/
+void swap(stack_t **stack, unsigned int line_number)
+{
+	int a = 0, b = 0;
+
+	line_number = line_number;
+	a = (*stack)->n;
+	b = (*stack)->next->n;
+	(*stack)->n = b;
+	(*stack)->next->n = a;
+}
