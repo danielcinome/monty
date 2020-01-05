@@ -46,6 +46,7 @@ extern stack_t *head_stack;
 void search(char *buff, unsigned int line_number);
 void free_stack(stack_t *stack);
 char **tokens(char *buff, char *sep);
+void search(char *buff, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
 void push(stack_t **stack, unsigned int line_number);
 void pint(stack_t **h, unsigned int line_number);

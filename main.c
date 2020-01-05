@@ -34,7 +34,7 @@ int main(int ac, char **av)
 	}
 	fclose(fp);
 	free(line_buff);
-	free_stack(head_stack);
+	//free_stack(head_stack);
 	line_buff = NULL;
 	return (0);
 }

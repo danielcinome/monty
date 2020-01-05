@@ -1,6 +1,35 @@
 #include "monty.h"
 
 /**
+ * case_push - case push
+ * @ops: function push
+ * @word_cmp: word token
+ * @line_number: number of line
+ */
+void case_push(instruction_t ops[], char **word_cmp, unsigned int line_number)
+{
+	int i = 0, j = 0;
+
+	if (word_cmp[1] == NULL)
+	{
+		fprintf(stderr, "L%d: usage: push integer\n", line_number),
+		exit(EXIT_FAILURE);
+	}
+	if (word_cmp[1][0] == '-')
+		j++;
+	while (word_cmp[1][j])
+	{
+		if (isdigit(word_cmp[1][j]) == 0)
+		{
+			fprintf(stderr, "L%d: usage: push integer\n", line_number);
+			exit(EXIT_FAILURE);
+		}
+		j++;
+	}
+	(ops[i].f)(&head_stack, _atoi(word_cmp[1]));
+}
+
+/**
 * search - function that the opcode looks for
 * @buff : line content
 * @line_number : line number
@@ -10,32 +39,18 @@ void search(char *buff, unsigned int line_number)
 {
 	instruction_t ops[] = {{"push", push}, {"pall", pall}, {NULL, NULL}};
 	char **word_cmp;
-	int i = 0, j = 0, flag = 0;
+	int flag = 0, i = 0;
 
-	word_cmp = tokens(buff, "\t ");
+	word_cmp = tokens(buff, "\t\n ");
+	if (word_cmp[0] == NULL)
+		return;
 	while (ops[i].opcode != NULL)
 	{
 		if (strcmp(ops[i].opcode, word_cmp[0]) == 0)
 		{
 			if (strcmp(word_cmp[0], "push") == 0)
 			{
-				if (word_cmp[1] == NULL)
-				{
-					fprintf(stderr, "L%d: usage: push integer\n", line_number),
-					exit(EXIT_FAILURE);
-				}
-				if (word_cmp[1][0] == '-')
-					j++;
-				while (word_cmp[1][j])
-				{
-					if (isdigit(word_cmp[1][j]) == 0)
-					{
-						fprintf(stderr, "L%d: usage: push integer\n", line_number);
-						exit(EXIT_FAILURE);
-					}
-					j++;
-				}
-				(ops[i].f)(&head_stack, _atoi(word_cmp[1]));
+				case_push(ops, word_cmp, line_number);
 			}
 			else
 				(ops[i].f)(&head_stack, line_number);
