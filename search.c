@@ -42,7 +42,7 @@ void search(char *buff, unsigned int line_number)
 	instruction_t ops[] = {
 		{"push", push}, {"pall", pall}, {"pint", pint}, {"pop", pop},
 		{"swap", swap}, {"add", add}, {"nop", nop}, {"sub", sub},
-		{"div", _div}, {NULL, NULL}};
+		{"div", _div}, {"mul", mul}, {NULL, NULL}};
 	char **word_cmp;
 	int flag = 0, i = 0;
 
