@@ -4,16 +4,13 @@
  * free_stack - free of the list
  * @stack: Head of stack
  */
-void free_stack(stack_t **stack)
+void free_stack(stack_t *stack)
 {
-	stack_t *aux;
-
-	while (*stack)
+	while (stack)
 	{
-		aux = (*stack)->next;
-		free(*stack);
-		aux->prev = NULL;
-		*stack = aux;
+		stack = stack->next;
+		free(stack);
+		stack->prev = NULL;
 	}
-	free(*stack);
+	free(stack);
 }
