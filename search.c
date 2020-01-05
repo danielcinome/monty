@@ -12,6 +12,7 @@ void case_push(instruction_t ops[], char **word_cmp, unsigned int line_number)
 
 	if (word_cmp[1] == NULL)
 	{
+		free(word_cmp);
 		fprintf(stderr, "L%d: usage: push integer\n", line_number),
 		exit(EXIT_FAILURE);
 	}
@@ -67,4 +68,5 @@ void search(char *buff, unsigned int line_number)
 		fprintf(stderr, "L%d: unknown instruction %s\n", line_number, word_cmp[0]);
 		exit(EXIT_FAILURE);
 	}
+	free(word_cmp);
 }
