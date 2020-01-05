@@ -65,7 +65,9 @@ void search(char *buff, unsigned int line_number)
 				case_push(ops, word_cmp, line_number);
 			}
 			else
+			{
 				(ops[i].f)(&head_stack, line_number);
+			}
 			flag = 1;
 		}
 		i++;
