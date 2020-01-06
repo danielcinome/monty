@@ -54,12 +54,12 @@ void pchar(stack_t **stack, unsigned int line_number)
 }
 
 /**
-* pstr - prints the string starting at the
+* _pstr - prints the string starting at the
 * top of the stack, followed by a new line
 * @stack : head
 * @line_number : line number
 */
-void pstr(stack_t **stack, unsigned int line_number)
+void _pstr(stack_t **stack, unsigned int line_number)
 {
 	UNUSED(line_number);
 	int num = 0;
