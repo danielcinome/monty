@@ -63,16 +63,14 @@ void _pstr(stack_t **stack, unsigned int line_number)
 	int num = 0;
 
 	UNUSED(line_number);
-	while ((*stack) != NULL)
+	while ((*stack) != NULL && (*stack)->n != 0)
 	{
 		num = (*stack)->n;
-		if (num == 0)
-		{
-			printf("\n");
-			return;
-		}
-		if (num > 32 && num < 126)
+		if (num > 0 && num <= 127)
 			printf("%c", num);
+		else
+			break;
 		(*stack) = (*stack)->next;
 	}
+	printf("\n");
 }
