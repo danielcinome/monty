@@ -76,3 +76,55 @@ void _pstr(stack_t **stack, unsigned int line_number)
 	}
 	printf("\n");
 }
+
+/**
+* add_dnodeint_end - adds a new node at the end of a list
+* @head : head
+* @n : number
+*/
+
+void add_dnodeint_end(stack_t **head, const int n)
+{
+	stack_t *temp;
+	stack_t *new;
+
+	if (head == NULL)
+		exit(EXIT_FAILURE);
+
+	new = malloc(sizeof(stack_t));
+	if (new == NULL)
+		exit(EXIT_FAILURE);
+
+	temp = *head;
+	new->n = n;
+	if (temp == NULL)
+	{
+		new->next = NULL;
+		new->prev = NULL;
+		*head = new;
+	}
+	else
+	{
+		while (temp->next != NULL)
+		{
+			temp = temp->next;
+		}
+		new->next = NULL;
+		new->prev = temp;
+		temp->next = new;
+	}
+}
+
+/**
+* rotl - rotates the stack to the top.
+* @stack : head
+* @line_number : line number
+*/
+void rotl(stack_t **stack, unsigned int line_number)
+{
+	int val = 0;
+
+	val = (*stack)->n;
+	pop(stack, line_number);
+	add_dnodeint_end(stack, val);
+}
