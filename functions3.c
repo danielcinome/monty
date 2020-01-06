@@ -124,7 +124,10 @@ void rotl(stack_t **stack, unsigned int line_number)
 {
 	int val = 0;
 
-	val = (*stack)->n;
-	pop(stack, line_number);
-	add_dnodeint_end(stack, val);
+	if ((*stack) != NULL && (*stack)->next != NULL)
+	{
+		val = (*stack)->n;
+		pop(stack, line_number);
+		add_dnodeint_end(stack, val);
+	}
 }
