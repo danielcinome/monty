@@ -13,7 +13,7 @@ void rotr(stack_t **stack, unsigned int line_number)
 	UNUSED(line_number);
 	if ((*stack) != NULL && (*stack)->next != NULL)
 	{
-		while (*stack)
+		while ((*stack)->next != NULL)
 		{
 			*stack = (*stack)->next;
 		}
