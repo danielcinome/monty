@@ -47,7 +47,7 @@ void search(char *buff, unsigned int line_number)
 	int flag = 0, i = 0;
 
 	word_cmp = tokens(buff, "\t ");
-	if (word_cmp[0] == NULL)
+	if (word_cmp[0] == NULL || word_cmp[0][0] == '#')
 	{
 		free(word_cmp);
 		return;
