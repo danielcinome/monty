@@ -60,17 +60,19 @@ void pchar(stack_t **stack, unsigned int line_number)
 */
 void _pstr(stack_t **stack, unsigned int line_number)
 {
+	stack_t *temp;
 	int num = 0;
 
 	UNUSED(line_number);
-	while ((*stack) != NULL && (*stack)->n != 0)
+	temp = *stack;
+	while (temp != NULL && (*stack)->n != 0)
 	{
-		num = (*stack)->n;
+		num = temp->n;
 		if (num > 0 && num <= 127)
 			printf("%c", num);
 		else
 			break;
-		(*stack) = (*stack)->next;
+		temp = temp->next;
 	}
 	printf("\n");
 }
