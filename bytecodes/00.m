@@ -1,5 +1,3 @@
-push 8
-push 5
+push 176
 pall
-#mod
-pall
+pchar
